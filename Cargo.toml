@@ -1,0 +1,11 @@
+[package]
+name = "nixbot"
+authors = ["Yusuf Bera Ertan <y.bera003.06@protonmail.com>"]
+version = "0.1.0"
+edition = "2018"
+
+# see https://github.com/yusdacra/nix-cargo-integration for more information
+[package.metadata.nix]
+systems = ["x86_64-linux"]
+build = true
+app = true

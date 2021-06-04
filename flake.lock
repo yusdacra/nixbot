@@ -1,0 +1,167 @@
+{
+  "nodes": {
+    "crate2nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1619462726,
+        "narHash": "sha256-bQuUBOGzPnL3S+aweK/P9WRfNGk/tuoLDPfzIiX7XXY=",
+        "owner": "yusdacra",
+        "repo": "crate2nix",
+        "rev": "e10f71834d1464cd4b07d1bf7965c65abbff3fab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yusdacra",
+        "ref": "feat/builtinfetchgit",
+        "repo": "crate2nix",
+        "type": "github"
+      }
+    },
+    "devshell": {
+      "locked": {
+        "lastModified": 1622711433,
+        "narHash": "sha256-rGjXz7FA7HImAT3TtoqwecByLO5yhVPSwPdaYPBFRQw=",
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "1f4fb67b662b65fa7cfe696fc003fcc1e8f7cc36",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "devshell",
+        "type": "github"
+      }
+    },
+    "flakeCompat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1606424373,
+        "narHash": "sha256-oq8d4//CJOrVj+EcOaSXvMebvuTkmBJuT5tzlfewUnQ=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "99f1c2157fba4bfe6211a321fd0ee43199025dbf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flakeUtils": {
+      "locked": {
+        "lastModified": 1622445595,
+        "narHash": "sha256-m+JRe6Wc5OZ/mKw2bB3+Tl0ZbtyxxxfnAWln8Q5qs+Y=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7d706970d94bc5559077eb1a6600afddcd25a7c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "naersk": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1619312121,
+        "narHash": "sha256-Zx1rTlonsp54lVlnIg38HV3bYx6GdIoKS1SgDnV+YBY=",
+        "owner": "yusdacra",
+        "repo": "naersk",
+        "rev": "07d0b56bdbd353a705f26b799e3a125c7be0f8c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yusdacra",
+        "ref": "feat/cargolock-git-deps",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "nixCargoIntegration": {
+      "inputs": {
+        "crate2nix": "crate2nix",
+        "devshell": "devshell",
+        "flakeUtils": "flakeUtils",
+        "naersk": "naersk",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "preCommitHooks": "preCommitHooks",
+        "rustOverlay": "rustOverlay"
+      },
+      "locked": {
+        "lastModified": 1622779316,
+        "narHash": "sha256-/b9LRY/O/CN3YSSQlmZO8Xg9pG4ne/+ERZ2vgjpz8to=",
+        "owner": "yusdacra",
+        "repo": "nix-cargo-integration",
+        "rev": "b7c36c6e86d67d49af48f0e154f0ea756100a101",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yusdacra",
+        "repo": "nix-cargo-integration",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1622545032,
+        "narHash": "sha256-1Y+2LFqnMBEH9OZzMBdLWl6GWFt/xzNz0V5X+m05Ing=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1c2986bbb806c57f9470bf3231d8da7250ab9091",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "preCommitHooks": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622650193,
+        "narHash": "sha256-qSzUpJDv04ajS9FXoCq6NjVF3qOt9IiGIiGh0P8amyw=",
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "rev": "0398f0649e0a741660ac5e8216760bae5cc78579",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flakeCompat": "flakeCompat",
+        "nixCargoIntegration": "nixCargoIntegration",
+        "nixpkgs": "nixpkgs"
+      }
+    },
+    "rustOverlay": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622775036,
+        "narHash": "sha256-43JJWPCQA3mylred9R7mbJzYNmwdPsFpLXQn8UQ3GbM=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "bb606796cb41cf487097708d36b2852605c5807f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
