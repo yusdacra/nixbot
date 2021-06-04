@@ -4,8 +4,25 @@ authors = ["Yusuf Bera Ertan <y.bera003.06@protonmail.com>"]
 version = "0.1.0"
 edition = "2018"
 
+[profile.dev]
+debug = false
+incremental = true
+
 # see https://github.com/yusdacra/nix-cargo-integration for more information
 [package.metadata.nix]
 systems = ["x86_64-linux"]
 build = true
 app = true
+env.RUSTC_FORCE_INCREMENTAL = "1"
+
+[dependencies]
+discord = { package = "serenity", version =  "0.10", default-features = false, features = ["client", "cache", "model", "builder", "rustls_backend", "collector"] }
+tokio = { version = "1.6", features = ["rt", "rt-multi-thread", "macros", "parking_lot", "signal"] }
+github = { package = "octocrab", version = "0.9", default-features = false, features = ["rustls"] }
+parking_lot = "0.11"
+serde = { version = "1", features = ["derive"] }
+toml = "0.5"
+url = "2"
+tracing = "0.1"
+tracing-subscriber = "0.2"
+tracing-appender = "0.1"
