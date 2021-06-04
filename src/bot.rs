@@ -113,21 +113,21 @@ impl Bot {
 #[async_trait]
 impl EventHandler for Bot {
     async fn message(&self, ctx: Context, message: Message) {
-        let chan_id = message.channel_id;
-        let pr_channel = self.data.lock().pr_channel;
+        let is_pr_channel = self
+            .data
+            .lock()
+            .pr_channel
+            .as_ref()
+            .map_or(false, |id| message.channel_id.eq(id));
 
-        if let Some(pr_chan_id) = pr_channel {
-            if chan_id == pr_chan_id {
-                if let Ok(pr_url) = message.content.parse::<Url>() {
-                    let maybe_pr_number = pr_url
-                        .path()
-                        .strip_prefix(PR_PATH_PREFIX)
-                        .map(|maybe_num| maybe_num.parse::<u64>().ok())
-                        .flatten();
-                    if let Some(pr_number) = maybe_pr_number {
-                        self.pr_handler(&ctx, &message, pr_number).await;
-                    }
-                }
+        if let (true, Ok(pr_url)) = (is_pr_channel, message.content.parse::<Url>()) {
+            let maybe_pr_number = pr_url
+                .path()
+                .strip_prefix(PR_PATH_PREFIX)
+                .map(|maybe_num| maybe_num.parse::<u64>().ok())
+                .flatten();
+            if let Some(pr_number) = maybe_pr_number {
+                self.pr_handler(&ctx, &message, pr_number).await;
             }
         }
 
