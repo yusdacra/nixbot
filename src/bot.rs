@@ -1,4 +1,4 @@
-use crate::gh::{get_pr, Gh};
+use crate::gh::Gh;
 
 use std::sync::Arc;
 
@@ -22,13 +22,13 @@ struct BotData {
 }
 
 #[derive(Debug, Clone)]
-pub struct Bot {
-    gh: Gh,
+pub struct Bot<'a> {
+    gh: Gh<'a>,
     data: Arc<PMutex<BotData>>,
 }
 
-impl Bot {
-    pub fn new(gh: Gh) -> Self {
+impl<'a> Bot<'a> {
+    pub fn new(gh: Gh<'a>) -> Self {
         Self {
             gh,
             data: Default::default(),
@@ -55,7 +55,7 @@ impl Bot {
             "PR link received with PR number {} from user {}",
             pr_number, msg.author.id
         );
-        match get_pr(&self.gh, pr_number).await {
+        match self.gh.pulls().get(pr_number).await {
             Ok(pr) => {
                 let content = format!("<@{}>: {} | <{}>", msg.author.id, pr.title, msg.content,);
                 let result = msg
@@ -111,7 +111,7 @@ impl Bot {
 }
 
 #[async_trait]
-impl EventHandler for Bot {
+impl<'a> EventHandler for Bot<'a> {
     async fn message(&self, ctx: Context, message: Message) {
         let is_pr_channel = self
             .data

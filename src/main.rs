@@ -5,6 +5,8 @@ use bot::Bot;
 
 use tracing_subscriber::{fmt, prelude::*, EnvFilter};
 
+use crate::gh::Gh;
+
 const LOG_FILENAME_PREFIX: &str = "log";
 
 #[tokio::main]
@@ -32,10 +34,10 @@ async fn main() {
     if let Ok(token) = gh_token {
         builder = builder.personal_token(token);
     }
-    let gh = github::initialise(builder).expect("failed to initialize github client");
+    let inner_gh = github::initialise(builder).expect("failed to initialize github client");
 
     // Build our bot and read data
-    let bot = Bot::new(gh);
+    let bot = Bot::new(Gh::new(inner_gh));
     bot.read_data().await;
 
     // Build discord client
